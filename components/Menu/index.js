@@ -11,7 +11,7 @@ const Container = styled.View`
 
 const Button = styled.TouchableOpacity`
 	width: 16%;
-	min-width: 120px;
+	min-width: 130px;
 	height: 50px;
 	display: flex;
 	align-items: center;

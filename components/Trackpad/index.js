@@ -1,5 +1,11 @@
 import styled from "@emotion/native"
-
+import Animated, {
+	useSharedValue,
+	withSpring,
+	useAnimatedStyle,
+	useAnimatedGestureHandler,
+} from "react-native-reanimated"
+import {PanGestureHandler} from "react-native-gesture-handler"
 const Container = styled.View`
 	flex: 1;
 	flex-direction: column;
@@ -28,6 +34,7 @@ const Trackpadzone = styled.View`
 	flex: 1;
 	border-radius: 25px;
 	position: relative;
+	justify-content: center;
 `
 
 const TrackpadArrow = styled.Image`
@@ -62,11 +69,12 @@ const TrackpadArrow = styled.Image`
 			`
 		} else if (props.type === "center") {
 			return `
-				transform:  translateY(-35px) translateX(-35px);
+				transform:  translateX(-35px) translateY(-35px);
 				left: 50%;
 				top: 50%;
 				width: 70px;
 				height: 70px;
+				position: relative;
 			`
 		} else {
 			return ``
@@ -75,9 +83,40 @@ const TrackpadArrow = styled.Image`
 `
 
 function Trackpad() {
+	const handleGesture = (evt) => {
+		let {nativeEvent} = evt
+		console.log(nativeEvent)
+	}
+
+	const startingPosition = 0
+	const x = useSharedValue(startingPosition)
+	const y = useSharedValue(startingPosition)
+
+	const gestureHandler = useAnimatedGestureHandler({
+		onStart: (_, ctx) => {
+			ctx.startX = x.value
+			ctx.startY = y.value
+		},
+		onActive: (event, ctx) => {
+			x.value = ctx.startX + event.translationX
+			y.value = ctx.startY + event.translationY
+		},
+		onEnd: (_) => {
+			x.value = withSpring(startingPosition)
+			y.value = withSpring(startingPosition)
+		},
+	})
+
+	const animatedStyle = useAnimatedStyle(() => {
+		return {
+			transform: [{translateX: x.value}, {translateY: y.value}],
+		}
+	})
+
 	return (
 		<Container>
 			<Title>Navegación 360º</Title>
+
 			<Trackpadzone>
 				<TrackpadArrow
 					source={require("../../assets/arrow_trackpad.png")}
@@ -102,12 +141,15 @@ function Trackpad() {
 					resizeMode="contain"
 					type="right"
 				/>
-
-				<TrackpadArrow
-					source={require("../../assets/hand_trackpad.png")}
-					resizeMode="contain"
-					type="center"
-				/>
+				<PanGestureHandler onGestureEvent={gestureHandler} style>
+					<Animated.View style={[animatedStyle]}>
+						<TrackpadArrow
+							source={require("../../assets/hand_trackpad.png")}
+							resizeMode="contain"
+							type="center"
+						/>
+					</Animated.View>
+				</PanGestureHandler>
 			</Trackpadzone>
 		</Container>
 	)

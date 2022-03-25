@@ -11,8 +11,8 @@ const Container = styled.View`
 `
 
 const Logo = styled.Image`
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 `
 
 function Footer() {
