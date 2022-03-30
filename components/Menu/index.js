@@ -34,8 +34,10 @@ const TextButton = styled.Text`
 
 const io = require("socket.io-client")
 
+import {SERVER} from "../../contants"
+
 function Menu() {
-	const socket = io("http://localhost:8000", {})
+	const socket = io(SERVER, {})
 
 	const handleClickMenu = (space) => {
 		socket.emit("spaces", space)

@@ -81,9 +81,12 @@ const TrackpadArrow = styled.Image`
 		}
 	}}
 `
+import {SERVER} from "../../contants"
+
+console.log("el server es", SERVER)
 
 function Trackpad() {
-	const socket = io("http://localhost:8000", {})
+	const socket = io(SERVER, {})
 
 	const handleGesture = (evt) => {
 		let {nativeEvent} = evt

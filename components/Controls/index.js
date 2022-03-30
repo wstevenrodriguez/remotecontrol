@@ -42,8 +42,11 @@ const TextButton = styled.Text`
 
 const io = require("socket.io-client")
 
+import {SERVER} from "../../contants"
+console.log("server", SERVER)
+
 function Controls() {
-	const socket = io("http://localhost:8000", {})
+	const socket = io(SERVER, {})
 
 	const handleClickControl = (type) => {
 		socket.emit("controls", type)
