@@ -6,6 +6,9 @@ import Animated, {
 	useAnimatedGestureHandler,
 } from "react-native-reanimated"
 import {PanGestureHandler} from "react-native-gesture-handler"
+
+const io = require("socket.io-client")
+
 const Container = styled.View`
 	flex: 1;
 	flex-direction: column;
@@ -17,7 +20,6 @@ const Container = styled.View`
 	padding-top: 0px;
 	position: relative;
 `
-
 const Title = styled.Text`
 	color: #fff;
 	font-size: 20px;
@@ -28,7 +30,6 @@ const Title = styled.Text`
 	width: 100%;
 	padding: 20px 0;
 `
-
 const Trackpadzone = styled.View`
 	background-color: #1c1f2e;
 	flex: 1;
@@ -36,7 +37,6 @@ const Trackpadzone = styled.View`
 	position: relative;
 	justify-content: center;
 `
-
 const TrackpadArrow = styled.Image`
 	width: 45px;
 	height: 45px;
@@ -83,9 +83,12 @@ const TrackpadArrow = styled.Image`
 `
 
 function Trackpad() {
+	const socket = io("http://localhost:8000", {})
+
 	const handleGesture = (evt) => {
 		let {nativeEvent} = evt
-		console.log(nativeEvent)
+
+		socket.emit("trackpad", nativeEvent)
 	}
 
 	const startingPosition = 0
@@ -141,7 +144,7 @@ function Trackpad() {
 					resizeMode="contain"
 					type="right"
 				/>
-				<PanGestureHandler onGestureEvent={gestureHandler} style>
+				<PanGestureHandler onGestureEvent={handleGesture}>
 					<Animated.View style={[animatedStyle]}>
 						<TrackpadArrow
 							source={require("../../assets/hand_trackpad.png")}

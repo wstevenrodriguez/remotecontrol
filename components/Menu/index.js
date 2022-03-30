@@ -32,37 +32,45 @@ const TextButton = styled.Text`
 	font-weight: bold;
 `
 
+const io = require("socket.io-client")
+
 function Menu() {
+	const socket = io("http://localhost:8000", {})
+
+	const handleClickMenu = (space) => {
+		socket.emit("spaces", space)
+	}
+
 	return (
 		<Container>
-			<Button>
+			<Button onPress={() => handleClickMenu("Cocina")}>
 				<TextButton>Cocina</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("CuartoRopas")}>
 				<TextButton>Cuarto Ropas</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("Hab.Servicio")}>
 				<TextButton>Hab.Servicio</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("Salon")}>
 				<TextButton>Salón</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("Balcon")}>
 				<TextButton>Balcón</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("Estudio")}>
 				<TextButton>Estudio</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickMenu("Hab.1")}>
 				<TextButton>Hab. 1</TextButton>
 			</Button>
-			<Button>
+			<Button onClick={() => handleClickMenu("Hab.2")}>
 				<TextButton>Hab. 2</TextButton>
 			</Button>
-			<Button>
+			<Button onClick={() => handleClickMenu("Hab.Principal")}>
 				<TextButton>Hab. Principal</TextButton>
 			</Button>
-			<Button>
+			<Button onClick={() => handleClickMenu("Vestier")}>
 				<TextButton>Vestier</TextButton>
 			</Button>
 		</Container>

@@ -40,26 +40,34 @@ const TextButton = styled.Text`
 	text-transform: uppercase;
 `
 
+const io = require("socket.io-client")
+
 function Controls() {
+	const socket = io("http://localhost:8000", {})
+
+	const handleClickControl = (type) => {
+		socket.emit("controls", type)
+	}
+
 	return (
 		<Container>
-			<Button>
+			<Button onPress={() => handleClickControl("back-fast")}>
 				<ImageButton source={require("../../assets/back-fast.png")} resizeMode="contain" />
 				<TextButton>Retroceder</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickControl("back")}>
 				<ImageButton source={require("../../assets/back.png")} resizeMode="contain" />
 				<TextButton>Ir atras</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickControl("pause")}>
 				<ImageButton source={require("../../assets/pause.png")} resizeMode="contain" />
 				<TextButton>Pausa</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickControl("play")}>
 				<ImageButton source={require("../../assets/play.png")} resizeMode="contain" />
 				<TextButton>Play</TextButton>
 			</Button>
-			<Button>
+			<Button onPress={() => handleClickControl("advanced")}>
 				<ImageButton source={require("../../assets/advanced.png")} resizeMode="contain" />
 				<TextButton>Avanzar</TextButton>
 			</Button>
