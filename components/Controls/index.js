@@ -54,7 +54,10 @@ function Controls() {
 
 	return (
 		<Container>
-			<Button onPress={() => handleClickControl("back-fast")}>
+			<Button
+				onPressIn={() => handleClickControl("back-fast-press-in")}
+				onPressOut={() => handleClickControl("back-fast-press-out")}
+			>
 				<ImageButton source={require("../../assets/back-fast.png")} resizeMode="contain" />
 				<TextButton>Retroceder</TextButton>
 			</Button>
@@ -70,7 +73,10 @@ function Controls() {
 				<ImageButton source={require("../../assets/play.png")} resizeMode="contain" />
 				<TextButton>Play</TextButton>
 			</Button>
-			<Button onPress={() => handleClickControl("advanced")}>
+			<Button
+				onPressIn={() => handleClickControl("advanced-press-in")}
+				onPressOut={() => handleClickControl("advanced-press-out")}
+			>
 				<ImageButton source={require("../../assets/advanced.png")} resizeMode="contain" />
 				<TextButton>Avanzar</TextButton>
 			</Button>
