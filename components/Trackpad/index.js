@@ -17,8 +17,8 @@ const Container = styled.View`
 	flex-direction: column;
 	background-color: #968a7e;
 	border-radius: 25px;
-	height: 95%;
-	margin: 0px 70px;
+	height: 100%;
+	margin: 0px 50px;
 	padding: 12px;
 	padding-top: 0px;
 	position: relative;
@@ -85,6 +85,7 @@ const TrackpadArrow = styled.Image`
 	}}
 `
 import {SERVER} from "../../contants"
+import {keyframes} from "@emotion/react"
 
 console.log("el server es", SERVER)
 
