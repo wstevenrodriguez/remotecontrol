@@ -2,28 +2,40 @@ export const SERVER = "http://192.168.0.100:8000"
 
 export const SPACES = [
 	{
-		key: "Cocina",
-		name: "Cocina",
+		key: "Acceso",
+		name: "Acceso",
 	},
 	{
-		key: "CuartoRopas",
-		name: "Cuarto Ropas",
+		key: "Sala1",
+		name: "Sala. 1",
 	},
 	{
-		key: "Hab.Servicio",
-		name: "Hab. Servicio",
+		key: "Sala2",
+		name: "Sala. 2",
 	},
 	{
-		key: "Salon",
-		name: "Salón",
+		key: "Cocina1",
+		name: "Cocina. 1",
+	},
+	{
+		key: "Cocina2",
+		name: "Cocina. 2",
 	},
 	{
 		key: "Balcon",
 		name: "Balcón",
 	},
 	{
+		key: "Hall",
+		name: "Hall",
+	},
+	{
 		key: "Estudio",
 		name: "Estudio",
+	},
+	{
+		key: "Habppal",
+		name: "Hab. ppal",
 	},
 	{
 		key: "Hab.1",
@@ -32,13 +44,5 @@ export const SPACES = [
 	{
 		key: "Hab.2",
 		name: "Hab. 2",
-	},
-	{
-		key: "Hab.Principal",
-		name: "Hab. Principal",
-	},
-	{
-		key: "Vestier",
-		name: "Vestier",
 	},
 ]

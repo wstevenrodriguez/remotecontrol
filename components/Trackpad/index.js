@@ -86,6 +86,7 @@ const TrackpadArrow = styled.Image`
 `
 import {SERVER} from "../../contants"
 import {keyframes} from "@emotion/react"
+import {EntryAnimation} from "../../helpers/EntryAnimation"
 
 console.log("el server es", SERVER)
 
@@ -158,7 +159,7 @@ function Trackpad() {
 			<Title>Navegación 360º</Title>
 
 			<Trackpadzone>
-				<TrackpadArrow
+				{/* <TrackpadArrow
 					source={require("../../assets/arrow_trackpad.png")}
 					resizeMode="contain"
 					type="top"
@@ -180,7 +181,16 @@ function Trackpad() {
 					source={require("../../assets/arrow_trackpad.png")}
 					resizeMode="contain"
 					type="right"
-				/>
+				/> */}
+
+				{/* <EntryAnimation index={1}>
+					<TrackpadArrow
+						source={require("../../assets/arrow_trackpad.png")}
+						resizeMode="contain"
+						type="left"
+					/>
+				</EntryAnimation> */}
+
 				<PanGestureHandler onGestureEvent={gestureHandler}>
 					<Animated.View style={[animatedStyle]}>
 						<TrackpadArrow
