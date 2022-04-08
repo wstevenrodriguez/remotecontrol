@@ -6,15 +6,18 @@ import Header from "./components/Header"
 import Menu from "./components/Menu"
 import Controls from "./components/Controls"
 import Footer from "./components/Footer"
+import Main from "./components/Main"
 
 export default function App() {
 	return (
 		<Container source={require("./assets/background.png")}>
 			<StatusBar style="auto" />
 			<Header />
-			<Menu />
-			<Controls />
-			<Footer />
+			<Main>
+				<Menu />
+				<Controls />
+				<Footer />
+			</Main>
 		</Container>
 	)
 }

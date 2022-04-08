@@ -1,4 +1,3 @@
-import {Image} from "react-native"
 import styled from "@emotion/native"
 
 const Container = styled.View`
@@ -40,15 +39,13 @@ const TextButton = styled.Text`
 	text-transform: uppercase;
 `
 
-const io = require("socket.io-client")
-
-import {SERVER} from "../../contants"
-console.log("server", SERVER)
+import {useSocket} from "../../utils/socket"
 
 function Controls() {
-	const socket = io(SERVER, {})
+	const socket = useSocket()
 
 	const handleClickControl = (type) => {
+		if (!socket) return
 		socket.emit("controls", type)
 	}
 

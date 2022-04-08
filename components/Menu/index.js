@@ -32,21 +32,21 @@ const TextButton = styled.Text`
 	font-weight: bold;
 `
 
-const io = require("socket.io-client")
-
-import {SERVER, SPACES} from "../../contants"
+import {useSocket} from "../../utils/socket"
+import {SPACES} from "../../contants"
 
 function Menu() {
-	const socket = io(SERVER, {})
+	const socket = useSocket()
 
-	const handleClickMenu = (space) => {
+	const handleSocket = (space) => {
+		if (!socket) return
 		socket.emit("spaces", space)
 	}
 
 	return (
 		<Container>
 			{SPACES.map(({key, name}) => (
-				<Button key={key} onPress={() => handleClickMenu(key)}>
+				<Button key={key} onPress={() => handleSocket(key)}>
 					<TextButton>{name}</TextButton>
 				</Button>
 			))}

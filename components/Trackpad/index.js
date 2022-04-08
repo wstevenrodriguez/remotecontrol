@@ -10,8 +10,6 @@ import Animated, {
 } from "react-native-reanimated"
 import {PanGestureHandler} from "react-native-gesture-handler"
 
-const io = require("socket.io-client")
-
 const Container = styled.View`
 	flex: 1;
 	flex-direction: column;
@@ -84,18 +82,16 @@ const TrackpadArrow = styled.Image`
 		}
 	}}
 `
-import {SERVER} from "../../contants"
-import {keyframes} from "@emotion/react"
-
-console.log("el server es", SERVER)
+import {useSocket} from "../../utils/socket"
 
 const X_DECELERATION_SPEED = 0.7
 const Y_DECELERATION_SPEED = 0.7
 
 function Trackpad() {
-	const socket = io(SERVER, {})
+	const socket = useSocket()
 
 	const handleGesture = (data) => {
+		if (!socket) return
 		socket.emit("trackpad", data)
 	}
 
