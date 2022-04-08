@@ -155,7 +155,7 @@ function Trackpad() {
 			<Title>Navegación 360º</Title>
 
 			<Trackpadzone>
-				<TrackpadArrow
+				{/* <TrackpadArrow
 					source={require("../../assets/arrow_trackpad.png")}
 					resizeMode="contain"
 					type="top"
@@ -177,7 +177,7 @@ function Trackpad() {
 					source={require("../../assets/arrow_trackpad.png")}
 					resizeMode="contain"
 					type="right"
-				/>
+				/> */}
 				<PanGestureHandler onGestureEvent={gestureHandler}>
 					<Animated.View style={[animatedStyle]}>
 						<TrackpadArrow
