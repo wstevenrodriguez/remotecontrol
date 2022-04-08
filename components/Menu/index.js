@@ -5,18 +5,18 @@ const Container = styled.View`
 	justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 `
 
 const Button = styled.TouchableOpacity`
-	width: 11%;
+	width: 10%;
 	min-width: 130px;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	margin: 15px;
 	border-radius: 5px;
 	border: 2px solid #d3c7b7;

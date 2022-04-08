@@ -8,7 +8,7 @@ const Container = styled.View`
 	min-width: 700px;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	padding: 20px 0;
+	padding: 10px 0;
 	border-radius: 108px;
 `
 
