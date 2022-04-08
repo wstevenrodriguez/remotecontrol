@@ -82,6 +82,7 @@ const TrackpadArrow = styled.Image`
 		}
 	}}
 `
+
 import {useSocket} from "../../utils/socket"
 
 const X_DECELERATION_SPEED = 0.7
