@@ -29,7 +29,7 @@ const Title = styled.Text`
 	color: #26293a;
 	text-transform: uppercase;
 	width: 100%;
-	padding: 20px 0;
+	padding: 10px 0;
 `
 const Trackpadzone = styled.View`
 	background-color: #1c1f2e;

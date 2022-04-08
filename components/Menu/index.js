@@ -5,8 +5,8 @@ const Container = styled.View`
 	justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 `
 
 const Button = styled.TouchableOpacity`
