@@ -36,7 +36,6 @@ const Trackpadzone = styled.View`
 	flex: 1;
 	border-radius: 25px;
 	position: relative;
-	justify-content: center;
 `
 const TrackpadArrow = styled.Image`
 	width: 45px;
@@ -70,7 +69,7 @@ const TrackpadArrow = styled.Image`
 			`
 		} else if (props.type === "center") {
 			return `
-				transform:  translateX(-35px) translateY(-35px);
+				transform:  translateX(-35px) translateY(105px);
 				left: 50%;
 				top: 50%;
 				width: 70px;
@@ -155,29 +154,6 @@ function Trackpad() {
 			<Title>Navegación 360º</Title>
 
 			<Trackpadzone>
-				{/* <TrackpadArrow
-					source={require("../../assets/arrow_trackpad.png")}
-					resizeMode="contain"
-					type="top"
-				/>
-
-				<TrackpadArrow
-					source={require("../../assets/arrow_trackpad.png")}
-					resizeMode="contain"
-					type="bottom"
-				/>
-
-				<TrackpadArrow
-					source={require("../../assets/arrow_trackpad.png")}
-					resizeMode="contain"
-					type="left"
-				/>
-
-				<TrackpadArrow
-					source={require("../../assets/arrow_trackpad.png")}
-					resizeMode="contain"
-					type="right"
-				/> */}
 				<PanGestureHandler onGestureEvent={gestureHandler}>
 					<Animated.View style={[animatedStyle]}>
 						<TrackpadArrow
