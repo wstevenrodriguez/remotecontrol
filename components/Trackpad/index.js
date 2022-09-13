@@ -40,46 +40,6 @@ const Trackpadzone = styled.View`
 const TrackpadArrow = styled.Image`
 	width: 45px;
 	height: 45px;
-	position: absolute;
-
-	${(props) => {
-		if (props.type === "top") {
-			return `
-				transform: rotate(-90deg) translateX(-25px);
-				top: 5px;
-				left: 50%;
-			`
-		} else if (props.type === "bottom") {
-			return `
-				transform: rotate(90deg) translateX(-25px);
-				bottom: 5px;
-				left: 50%;
-			`
-		} else if (props.type === "left") {
-			return `
-				transform: rotate(-180deg) translateY(-25px);
-				left: 5px;
-				top: 50%;
-			`
-		} else if (props.type === "right") {
-			return `
-				transform:  translateY(-25px);
-				right: 5px;
-				top: 50%;
-			`
-		} else if (props.type === "center") {
-			return `
-				transform:  translateX(-35px) translateY(105px);
-				left: 50%;
-				top: 50%;
-				width: 70px;
-				height: 70px;
-				position: relative;
-			`
-		} else {
-			return ``
-		}
-	}}
 `
 
 import {useSocket} from "../../utils/socket"
@@ -155,12 +115,22 @@ function Trackpad() {
 
 			<Trackpadzone>
 				<PanGestureHandler onGestureEvent={gestureHandler}>
-					<Animated.View style={[animatedStyle]}>
-						<TrackpadArrow
-							source={require("../../assets/hand_trackpad.png")}
-							resizeMode="contain"
-							type="center"
-						/>
+					<Animated.View
+						key="wrapper"
+						style={{
+							flex: 1,
+							alignContent: "center",
+							justifyContent: "center",
+							alignItems: "center",
+						}}
+					>
+						<Animated.View style={[animatedStyle]}>
+							<TrackpadArrow
+								source={require("../../assets/hand_trackpad.png")}
+								resizeMode="contain"
+								type="center"
+							/>
+						</Animated.View>
 					</Animated.View>
 				</PanGestureHandler>
 			</Trackpadzone>
