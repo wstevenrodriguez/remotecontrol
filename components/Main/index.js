@@ -19,10 +19,12 @@ const Main = ({children}) => {
 
 	const onInitProvider = (client) => {
 		client.on("connect", () => {
+			console.log("server connected")
 			setIsSettingsVisible(false)
 		})
 
 		client.on("connect_error", () => {
+			client.close()
 			console.log("error at", server)
 			setIsSettingsVisible(true)
 		})
@@ -30,7 +32,6 @@ const Main = ({children}) => {
 
 	const onSaveSettings = (ip) => {
 		setData("ipserver", ip).then(() => {
-			console.log("ip", ip)
 			setServer(ip)
 			setIsSettingsVisible(false)
 		})
@@ -39,8 +40,6 @@ const Main = ({children}) => {
 	const onCancelSettings = () => {
 		setIsSettingsVisible(false)
 	}
-
-	console.log("Server at:", server)
 
 	return (
 		<>
