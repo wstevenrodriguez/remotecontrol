@@ -6,43 +6,57 @@ export const SPACES = [
 		name: "Acceso",
 	},
 	{
-		key: "Sala1",
-		name: "Sala. 1",
+		key: "Salon",
+		name: "Salón",
 	},
+	// {
+	// 	key: "Sala2",
+	// 	name: "Sala. 2",
+	// },
 	{
-		key: "Sala2",
-		name: "Sala. 2",
+		key: "Cocina",
+		name: "Cocina",
 	},
-	{
-		key: "Cocina1",
-		name: "Cocina. 1",
-	},
-	{
-		key: "Cocina2",
-		name: "Cocina. 2",
-	},
+	// {
+	// 	key: "Cocina2",
+	// 	name: "Cocina. 2",
+	// },
 	{
 		key: "Balcon",
 		name: "Balcón",
 	},
-	{
-		key: "Hall",
-		name: "Hall",
-	},
+	// {
+	// 	key: "Hall",
+	// 	name: "Hall",
+	// },
 	{
 		key: "Estudio",
 		name: "Estudio",
 	},
 	{
-		key: "Habppal",
+		key: "HabPrincipal",
 		name: "Hab. ppal",
 	},
 	{
-		key: "Hab.1",
+		key: "Hab1",
 		name: "Hab. 1",
 	},
 	{
-		key: "Hab.2",
+		key: "Hab2",
 		name: "Hab. 2",
 	},
+	{
+		key: "Vestier",
+		name: "Vestier",
+	},
+	{
+		key: "HabServicio",
+		name: "Hab. 2",
+	},
+	{
+		key: "CuartoRopas",
+		name: "Ropas",
+	},
+	
+	
 ]

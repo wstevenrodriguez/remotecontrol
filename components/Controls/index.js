@@ -1,4 +1,5 @@
 import styled from "@emotion/native"
+import { useCallback } from "react"
 
 const Container = styled.View`
 	flex-direction: row;
@@ -44,10 +45,10 @@ import {useSocket} from "../../utils/socket"
 function Controls() {
 	const socket = useSocket()
 
-	const handleClickControl = (type) => {
+	const handleClickControl = useCallback((type) => {
 		if (!socket) return
 		socket.emit("controls", type)
-	}
+	},[socket])
 
 	return (
 		<Container>
