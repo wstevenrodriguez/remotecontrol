@@ -1,4 +1,4 @@
-export const SERVER = "http://192.168.0.100:8000"
+export const SERVER = "http://192.168.50.40:8000"
 
 export const SPACES = [
 	{

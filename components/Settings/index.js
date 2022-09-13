@@ -75,7 +75,7 @@ function Settings({server, visible = false, onOkPress = () => {}, onCancelPress 
 			<Content>
 				<TextBlock>Socket Settings:</TextBlock>
 
-				<Input>{ip}</Input>
+				<Input onChangeText={setIp}>{ip}</Input>
 
 				<Footer>
 					<Button

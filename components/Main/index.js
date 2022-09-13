@@ -8,11 +8,11 @@ import Settings from "../Settings"
 import {SERVER} from "../../contants"
 
 const Main = ({children}) => {
-	const [server, setServer] = useState(SERVER)
+	const [server, setServer] = useState(null)
 	const [isSettingsVisible, setIsSettingsVisible] = useState(false)
 
 	useEffect(() => {
-		getData("server").then((server) => {
+		getData("ipserver").then((server) => {
 			setServer(server)
 		})
 	}, [])
@@ -23,12 +23,14 @@ const Main = ({children}) => {
 		})
 
 		client.on("connect_error", () => {
+			console.log("error at", server)
 			setIsSettingsVisible(true)
 		})
 	}
 
 	const onSaveSettings = (ip) => {
-		setData("server", ip).then(() => {
+		setData("ipserver", ip).then(() => {
+			console.log("ip", ip)
 			setServer(ip)
 			setIsSettingsVisible(false)
 		})
@@ -37,6 +39,8 @@ const Main = ({children}) => {
 	const onCancelSettings = () => {
 		setIsSettingsVisible(false)
 	}
+
+	console.log("Server at:", server)
 
 	return (
 		<>

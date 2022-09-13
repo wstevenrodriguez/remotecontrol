@@ -8,6 +8,7 @@ export const SocketProvider = ({server, children, onInit = () => {}}) => {
 	const [client, setClient] = useState(null)
 
 	useEffect(() => {
+		if(!server) return
 		const socket = io(server, {transports: ["websocket"]})
 		setClient(socket)
 		onInit(socket)
