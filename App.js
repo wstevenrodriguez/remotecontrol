@@ -7,7 +7,7 @@ import Menu from "./components/Menu"
 import Controls from "./components/Controls"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Prompt from "./components/Prompt"
 
 const io = require("socket.io-client")

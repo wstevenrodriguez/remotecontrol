@@ -58,11 +58,16 @@ function Trackpad({ server }) {
 	}, [server, socket.connected])
 
 
-	const handleGesture = useCallback((data) => {
+	const handleSocket = useCallback((data) => {
 		if (!socket) return
 		socket.emit("trackpad", data)
-		console.log("conectado", socket.connected)
 	}, [server, socket.connected]);
+
+	const handleGesture = (data) => {
+		if (!socket) return
+		handleSocket(data)
+	}
+
 
 
 	const startingPosition = 0
