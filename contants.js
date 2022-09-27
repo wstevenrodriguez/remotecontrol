@@ -1,4 +1,4 @@
-export const SERVER = "http://192.168.50.40:8000"
+export const SERVER = "http://192.168.1.100:8000"
 
 export const SPACES = [
 	{
@@ -57,6 +57,6 @@ export const SPACES = [
 		key: "CuartoRopas",
 		name: "Ropas",
 	},
-	
-	
+
+
 ]
