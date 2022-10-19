@@ -15,11 +15,11 @@ const Logo = styled.Image`
 	height: 100px;
 `
 
-function Footer() {
+function Footer({ server }) {
 	return (
 		<Container>
 			<Logo source={require("../../assets/monterivera_logo.png")} resizeMode="contain" />
-			<Trackpad />
+			<Trackpad server={server} />
 			<Logo source={require("../../assets/amarilo_logo.png")} resizeMode="contain" />
 		</Container>
 	)

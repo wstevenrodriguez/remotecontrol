@@ -32,11 +32,18 @@ const TextButton = styled.Text`
 	font-weight: bold;
 `
 
-import {useSocket} from "../../utils/socket"
-import {SPACES} from "../../contants"
+import { useSocket } from "../../utils/socket"
+import { SPACES } from "../../contants"
+import { useEffect } from "react"
 
-function Menu() {
-	const socket = useSocket()
+const io = require("socket.io-client")
+
+function Menu({ server }) {
+	const socket = io(server, {})
+
+	useEffect(() => {
+		console.log("conectado")
+	}, [server])
 
 	const handleSocket = (space) => {
 		if (!socket) return
@@ -45,7 +52,7 @@ function Menu() {
 
 	return (
 		<Container>
-			{SPACES.map(({key, name}) => (
+			{SPACES.map(({ key, name }) => (
 				<Button key={key} onPress={() => handleSocket(key)}>
 					<TextButton>{name}</TextButton>
 				</Button>

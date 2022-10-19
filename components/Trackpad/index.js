@@ -8,7 +8,7 @@ import Animated, {
 	runOnJS,
 	withDecay,
 } from "react-native-reanimated"
-import {PanGestureHandler} from "react-native-gesture-handler"
+import { PanGestureHandler } from "react-native-gesture-handler"
 
 const Container = styled.View`
 	flex: 1;
@@ -42,18 +42,33 @@ const TrackpadArrow = styled.Image`
 	height: 45px;
 `
 
-import {useSocket} from "../../utils/socket"
+import { useSocket } from "../../utils/socket"
+import { useCallback, useEffect, useLayoutEffect } from "react"
 
 const X_DECELERATION_SPEED = 0.7
 const Y_DECELERATION_SPEED = 0.7
 
-function Trackpad() {
-	const socket = useSocket()
+const io = require("socket.io-client")
+
+function Trackpad({ server }) {
+	let socket = io(server, {})
+
+	useEffect(() => {
+		socket.emit("trackpad", { "translationX": 0, "translationY": 0 })
+	}, [server, socket.connected])
+
+
+	const handleSocket = useCallback((data) => {
+		if (!socket) return
+		socket.emit("trackpad", data)
+	}, [server, socket.connected]);
 
 	const handleGesture = (data) => {
 		if (!socket) return
-		socket.emit("trackpad", data)
+		handleSocket(data)
 	}
+
+
 
 	const startingPosition = 0
 	const x = useSharedValue(startingPosition)
@@ -76,7 +91,7 @@ function Trackpad() {
 			translationY.value = event.translationY
 		},
 
-		onEnd: ({velocityX, velocityY}) => {
+		onEnd: ({ velocityX, velocityY }) => {
 			//cursor
 			x.value = withSpring(startingPosition)
 			y.value = withSpring(startingPosition)
@@ -105,7 +120,7 @@ function Trackpad() {
 
 	const animatedStyle = useAnimatedStyle(() => {
 		return {
-			transform: [{translateX: x.value}, {translateY: y.value}],
+			transform: [{ translateX: x.value }, { translateY: y.value }],
 		}
 	})
 

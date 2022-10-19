@@ -1,5 +1,5 @@
 import styled from "@emotion/native"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 const Container = styled.View`
 	flex-direction: row;
@@ -40,15 +40,21 @@ const TextButton = styled.Text`
 	text-transform: uppercase;
 `
 
-import {useSocket} from "../../utils/socket"
+import { useSocket } from "../../utils/socket"
 
-function Controls() {
-	const socket = useSocket()
+const io = require("socket.io-client")
+
+function Controls({ server }) {
+	const socket = io(server, {})
+
+	useEffect(() => {
+		console.log("conectado")
+	}, [server])
 
 	const handleClickControl = useCallback((type) => {
 		if (!socket) return
 		socket.emit("controls", type)
-	},[socket])
+	}, [socket])
 
 	return (
 		<Container>

@@ -61,12 +61,8 @@ const Input = styled.TextInput`
 	margin-top: 20px;
 `
 
-function Settings({ server, statusSocket, visible = false, onOkPress = () => { }, onCancelPress = () => { } }) {
-	const [ip, setIp] = useState(server)
-
-	useEffect(() => {
-		setIp(server)
-	}, [server])
+function Prompt({ visible = false, onOkPress = () => { }, onCancelPress = () => { } }) {
+	const [ip, setIp] = useState()
 
 	if (!visible) return <></>
 
@@ -77,7 +73,6 @@ function Settings({ server, statusSocket, visible = false, onOkPress = () => { }
 
 				<Input onChangeText={setIp}>{ip}</Input>
 
-				<TextBlock>{statusSocket}</TextBlock>
 
 				<Footer>
 					<Button
@@ -96,4 +91,4 @@ function Settings({ server, statusSocket, visible = false, onOkPress = () => { }
 	)
 }
 
-export default Settings
+export default Prompt
