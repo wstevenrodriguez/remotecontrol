@@ -30,8 +30,8 @@ export const SPACES = [
 		name: "Hab. 1",
 	},
 	{
-		key: "Vestier H1",
-		name: "VestierH1",
+		key: "VestierH1",
+		name: "Vestier H1",
 	},
 
 	{
@@ -39,8 +39,8 @@ export const SPACES = [
 		name: "Hab. 2",
 	},
 	{
-		key: "Vestier H2",
-		name: "VestierH2",
+		key: "VestierH2",
+		name: "Vestier H2",
 	},
 	{
 		key: "HabPrincipal",
