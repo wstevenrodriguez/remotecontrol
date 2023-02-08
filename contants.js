@@ -11,7 +11,7 @@ export const SPACES = [
 	},
 	{
 		key: "HabServicio",
-		name: "Hab. 2",
+		name: "Hab. Servicio",
 	},
 	{
 		key: "Salon",
