@@ -9,6 +9,7 @@ import Footer from "./components/Footer"
 import Main from "./components/Main"
 import { useEffect, useState } from "react"
 import Prompt from "./components/Prompt"
+import { ImageBackground, View } from "react-native"
 
 const io = require("socket.io-client")
 
@@ -27,31 +28,31 @@ export default function App() {
 	}
 
 	return (
-		<Container source={require("./assets/background.png")}>
-			<StatusBar style="auto" />
-			<Header />
 
-			<Menu server={serverIp} />
-			<Controls server={serverIp} />
+		<ImageBackground
+			source={require("./assets/background.png")}
+			style={{ width: '100%', height: '100%' }}
+		>
+			<View style={{ flex: 1, padding: 20 }}>
+				<StatusBar style="auto" />
+				<Header />
 
-			{/* TRACKPAD */}
-			<Footer server={serverIp} />
+				<Menu server={serverIp} />
+				<Controls server={serverIp} />
 
-			<Prompt visible={visiblePrompt} onOkPress={(handleOkPress)} onCancelPress={() => setVisiblePrompt(false)} />
+				{/* TRACKPAD */}
+				<Footer server={serverIp} />
 
-			<Button onPress={handlePromptSettings}>
-				<ImageButton source={require("./assets/setting.png")} resizeMode="contain" />
-			</Button>
-		</Container>
+				<Prompt visible={visiblePrompt} onOkPress={(handleOkPress)} onCancelPress={() => setVisiblePrompt(false)} />
+
+				<Button onPress={handlePromptSettings}>
+					<ImageButton source={require("./assets/setting.png")} resizeMode="contain" />
+				</Button>
+			</View>
+
+		</ImageBackground>
 	)
 }
-
-const Container = styled.ImageBackground`
-	padding: 40px;
-	padding-bottom: 30px;
-	padding-top: 30px;
-	height: 100%;
-`
 
 const Button = styled.TouchableOpacity`
 	width: 50px;
