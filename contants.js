@@ -41,4 +41,13 @@ export const SPACES = [
 		key: "Vestier",
 		name: "Vestier",
 	},
+
+	{
+		key: "Vestier H1",
+		name: "VestierH1",
+	},
+	{
+		key: "Vestier H2",
+		name: "VestierH2",
+	},
 ]
